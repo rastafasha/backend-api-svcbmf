@@ -21,10 +21,10 @@ class RevistaResource extends JsonResource
             'fecha' =>$this->resource->fecha,
             'volumen' =>$this->resource->volumen,
             'numero' =>$this->resource->numero,
-            // "image"=> $this->resource->image ? env("APP_URL")."storage/".$this->resource->image : null,
-            "image"=> $this->resource->image ? env("APP_URL").$this->resource->image : null,
-            // "archivo"=> $this->resource->archivo ? env("APP_URL")."storage/".$this->resource->archivo : null,
-            "archivo"=> $this->resource->archivo ? env("APP_URL").$this->resource->archivo : null,
+            "image"=> $this->resource->image ? env("APP_URL")."storage/".$this->resource->image : null,
+            // "image"=> $this->resource->image ? env("APP_URL").$this->resource->image : null,
+            "archivo"=> $this->resource->archivo ? env("APP_URL")."storage/".$this->resource->archivo : null,
+            // "archivo"=> $this->resource->archivo ? env("APP_URL").$this->resource->archivo : null,
             "created_at"=>$this->resource->created_at ? Carbon::parse($this->resource->created_at)->format("Y-m-d h:i A") : NULL,
         ];
     }

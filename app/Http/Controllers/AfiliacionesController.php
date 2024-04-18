@@ -42,12 +42,12 @@ class AfiliacionesController extends Controller
     {
         $afiliacion_is_valid = Afiliaciones::where("user_id", $request->user_id)->first();
 
-        if($afiliacion_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el Afiliaciones ya existe'
-            ]);
-        }
+        // if($afiliacion_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el Afiliaciones ya existe'
+        //     ]);
+        // }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("afiliaciones", $request->file('imagen'));

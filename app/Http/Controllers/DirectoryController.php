@@ -22,9 +22,10 @@ class DirectoryController extends Controller
         $name_doctor = $request->search;
 
         $directories = Directory::filterAdvance($speciality_id, $name_doctor)->orderBy("nombre", "asc")
-                            ->paginate(10);
+                            // ->paginate(10);
+                            -> get();
         return response()->json([
-            "total"=>$directories->total(),
+            // "total"=>$directories->total(),
             "directories"=> DirectoryCollection::make($directories)
         ]);
 
@@ -133,5 +134,9 @@ class DirectoryController extends Controller
         $directory->update();
         return $directory;
         
+    }
+
+    public function search(Request $request){
+        return Directory::search($request->buscar);
     }
 }

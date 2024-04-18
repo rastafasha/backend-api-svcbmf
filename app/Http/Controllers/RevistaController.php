@@ -40,21 +40,22 @@ class RevistaController extends Controller
      */
     public function store(Request $request)
     {
-        $revista_is_valid = Revistas::where("user_id", $request->user_id)->first();
+        // $revista_is_valid = Revistas::where("user_id", $request->user_id)->first();
 
-        if($revista_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el revista ya existe'
-            ]);
-        }
+        // if($revista_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el revista ya existe'
+        //     ]);
+        // }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("revistas", $request->file('imagen'));
             $request->request->add(["image"=>$path]);
         }
-        if($request->hasFile('imagen')){
-            $path = Storage::putFile("revistas", $request->file('imagen'));
+
+        if($request->hasFile('imagenn')){
+            $path = Storage::putFile("revistas/pdf", $request->file('imagenn'));
             $request->request->add(["archivo"=>$path]);
         }
 
@@ -103,11 +104,11 @@ class RevistaController extends Controller
             $path = Storage::putFile("revistas", $request->file('imagen'));
             $request->request->add(["image"=>$path]);
         }
-        if($request->hasFile('imagen')){
+        if($request->hasFile('imagenn')){
             if($revista->archivo){
                 Storage::delete($revista->archivo);
             }
-            $path = Storage::putFile("revistas", $request->file('imagen'));
+            $path = Storage::putFile("revistas/pdf", $request->file('imagenn'));
             $request->request->add(["archivo"=>$path]);
         }
        

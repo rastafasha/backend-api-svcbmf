@@ -123,19 +123,19 @@ class User extends Authenticatable implements JWTSubject
 
 
 
-    public function speciality()
-    {
-        return $this->belongsTo(Specialitie::class);
-    }
+    // public function speciality()
+    // {
+    //     return $this->belongsTo(Specialitie::class);
+    // }
 
-    public function schedule_days()
-    {
-        return $this->hasMany(DoctorScheduleDay::class);
-    }
-    public function location()
-    {
-        return $this->hasMany(Location::class, 'location_id');
-    }
+    // public function schedule_days()
+    // {
+    //     return $this->hasMany(DoctorScheduleDay::class);
+    // }
+    // public function location()
+    // {
+    //     return $this->hasMany(Location::class, 'location_id');
+    // }
 
     
     

@@ -41,16 +41,16 @@ class BanVerticalController extends Controller
     {
         $banvertical_is_valid = Banverticals::where("user_id", $request->user_id)->first();
 
-        if($banvertical_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el banvertical ya existe'
-            ]);
-        }
+        // if($banvertical_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el banvertical ya existe'
+        //     ]);
+        // }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("banverticals", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
 
         $banvertical = Banverticals::create($request->all());
@@ -91,12 +91,14 @@ class BanVerticalController extends Controller
         
         $banvertical = Banverticals::findOrFail($id);
 
+
+        
         if($request->hasFile('imagen')){
-            if($banvertical->image){
-                Storage::delete($banvertical->image);
+            if($banvertical->avatar){
+                Storage::delete($banvertical->avatar);
             }
             $path = Storage::putFile("banverticals", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
        
         $banvertical->update($request->all());

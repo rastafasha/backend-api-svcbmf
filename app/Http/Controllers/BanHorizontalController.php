@@ -41,16 +41,16 @@ class BanHorizontalController extends Controller
     {
         $banhorizontal_is_valid = Banhorizontals::where("user_id", $request->user_id)->first();
 
-        if($banhorizontal_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el banhorizontal ya existe'
-            ]);
-        }
+        // if($banhorizontal_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el banhorizontal ya existe'
+        //     ]);
+        // }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("banhorizontals", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
 
         $banhorizontal = Banhorizontals::create($request->all());
@@ -92,11 +92,11 @@ class BanHorizontalController extends Controller
         $banhorizontal = Banhorizontals::findOrFail($id);
 
         if($request->hasFile('imagen')){
-            if($banhorizontal->image){
-                Storage::delete($banhorizontal->image);
+            if($banhorizontal->avatar){
+                Storage::delete($banhorizontal->avatar);
             }
             $path = Storage::putFile("banhorizontals", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
        
         $banhorizontal->update($request->all());

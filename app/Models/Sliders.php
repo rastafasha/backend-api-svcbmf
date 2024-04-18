@@ -21,7 +21,7 @@ class Sliders extends Model
         'enlace',
         'target',
         'is_active',
-        'image',
+        'avatar',
         'imagemovil',
     ];
 

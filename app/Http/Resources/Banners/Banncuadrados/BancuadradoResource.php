@@ -22,9 +22,8 @@ class BancuadradoResource extends JsonResource
             'target' =>$this->resource->target,
             'enlace' =>$this->resource->enlace,
             'is_active' =>$this->resource->is_active,
-            // "image"=> $this->resource->image ? env("APP_URL")."storage/".$this->resource->image : null,
-            "image"=> $this->resource->image ? env("APP_URL").$this->resource->image : null,
-            
+            "avatar"=> $this->resource->avatar ? env("APP_URL")."storage/".$this->resource->avatar : null,
+            // "avatar"=> $this->resource->avatar ? env("APP_URL").$this->resource->avatar : null,
             "created_at"=>$this->resource->created_at ? Carbon::parse($this->resource->created_at)->format("Y-m-d h:i A") : NULL,
         ];
     }

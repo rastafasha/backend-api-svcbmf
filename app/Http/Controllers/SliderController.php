@@ -42,21 +42,23 @@ class SliderController extends Controller
     {
         $slider_is_valid = Sliders::where("user_id", $request->user_id)->first();
 
-        if($slider_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el slider ya existe'
-            ]);
-        }
+        // if($slider_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el slider ya existe'
+        //     ]);
+        // }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("sliders", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
-        if($request->hasFile('imagen')){
-            $path = Storage::putFile("sliders", $request->file('imagen'));
+
+        if($request->hasFile('imagenn')){
+            $path = Storage::putFile("sliders", $request->file('imagenn'));
             $request->request->add(["imagemovil"=>$path]);
         }
+        
 
         $slider = Sliders::create($request->all());
 
@@ -97,17 +99,18 @@ class SliderController extends Controller
         $slider = Sliders::findOrFail($id);
 
         if($request->hasFile('imagen')){
-            if($slider->image){
-                Storage::delete($slider->image);
+            if($slider->avatar){
+                Storage::delete($slider->avatar);
             }
             $path = Storage::putFile("sliders", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
-        if($request->hasFile('imagen')){
+
+        if($request->hasFile('imagenn')){
             if($slider->imagemovil){
                 Storage::delete($slider->imagemovil);
             }
-            $path = Storage::putFile("sliders", $request->file('imagen'));
+            $path = Storage::putFile("sliders", $request->file('imagenn'));
             $request->request->add(["imagemovil"=>$path]);
         }
        
@@ -133,7 +136,7 @@ class SliderController extends Controller
         if($slider->image){
             Storage::delete($slider->image);
         }
-        $banvertical->delete();
+        $slider->delete();
         return response()->json([
             "message"=>200
         ]);

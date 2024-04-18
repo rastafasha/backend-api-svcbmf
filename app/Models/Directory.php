@@ -62,4 +62,15 @@ class Directory extends Model
         
         return $query;
     }
+
+
+    public static function search($query = ''){
+        if(!$query){
+            return self::all();
+        }
+        return self::where('nombre', 'like', "%$query%")
+        ->orWhere('email', 'like', "%$query%")
+        ->orWhere('surname', 'like', "%$query%")
+        ->get();
+    }
 }

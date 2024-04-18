@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Patient\Patient;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserUpdateRequest;
+// use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\Patient\PatientCollection;
 
 class AdminUserController extends Controller
@@ -38,14 +38,7 @@ class AdminUserController extends Controller
         //     return response()->json(["message"=>"El usuario no esta autenticado"],403);
         //    }
         
-        $users = User::select([
-            "id", "name", "email", "rolename"
-        ])
-            ->withCount([
-                // "payments",
-                "profiles",
-            ])
-            ->orderBy('id', 'desc')
+        $users = User::orderBy('id', 'desc')
             ->get();
 
             return response()->json([
@@ -73,7 +66,7 @@ class AdminUserController extends Controller
         }
 
         $user = User::select([
-            "id", "name", "email", "rolename","created_at"
+            "id", "name", "email", "created_at"
         ])
             // ->with([
             //     // "payments",
@@ -95,7 +88,7 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function userUpdate(UserUpdateRequest $request, User $user)
+    public function userUpdate(Request $request, User $user)
     {
         // $this->authorize('update', User::class);
 
@@ -190,15 +183,15 @@ class AdminUserController extends Controller
         $user = User::where('n_doc', $n_doc)
         ->orderBy('id', 'desc')
         ->get();
-        $patient = Patient::where('n_doc', $n_doc)
-        ->orderBy('id', 'desc')
-        ->get();
+        // $patient = Patient::where('n_doc', $n_doc)
+        // ->orderBy('id', 'desc')
+        // ->get();
         
-            return response()->json([
-                'code' => 200,
-                'status' => 'Listar patient by n_doc',
-                "user" => PatientCollection::make($user) ,
-                "patient" => PatientCollection::make($patient) ,
-            ], 200);
+        //     return response()->json([
+        //         'code' => 200,
+        //         'status' => 'Listar patient by n_doc',
+        //         "user" => PatientCollection::make($user) ,
+        //         "patient" => PatientCollection::make($patient) ,
+        //     ], 200);
     }
 }

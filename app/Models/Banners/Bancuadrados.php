@@ -17,7 +17,7 @@ class Bancuadrados extends Model
         'target',
         'enlace',
         'is_active',
-        'image',
+        'avatar',
 
     ];
 

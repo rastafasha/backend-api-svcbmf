@@ -17,7 +17,7 @@ class Banhorizontals extends Model
         'target',
         'enlace',
         'is_active',
-        'image',
+        'avatar',
 
     ];
 

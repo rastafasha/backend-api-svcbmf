@@ -41,18 +41,17 @@ class BanCuadriadoController extends Controller
     {
         $bancuadrado_is_valid = Bancuadrados::where("user_id", $request->user_id)->first();
 
-        if($bancuadrado_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el Aliados ya existe'
-            ]);
-        }
+        // if($bancuadrado_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el banhorizontals ya existe'
+        //     ]);
+        // }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("bancuadrados", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
-
         $bancuadrado = Bancuadrados::create($request->all());
 
         return response()->json([
@@ -92,13 +91,12 @@ class BanCuadriadoController extends Controller
         $bancuadrado = Bancuadrados::findOrFail($id);
 
         if($request->hasFile('imagen')){
-            if($bancuadrado->image){
-                Storage::delete($bancuadrado->image);
+            if($bancuadrado->avatar){
+                Storage::delete($bancuadrado->avatar);
             }
             $path = Storage::putFile("bancuadrados", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
-       
         $bancuadrado->update($request->all());
         
         // error_log($bancuadrado);

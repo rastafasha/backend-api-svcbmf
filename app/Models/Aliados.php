@@ -17,7 +17,7 @@ class Aliados extends Model
         'is_active',
         'enlace',
         'target',
-        'image',
+        'avatar',
 
     ];
 

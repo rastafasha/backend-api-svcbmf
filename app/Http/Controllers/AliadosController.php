@@ -50,7 +50,7 @@ class AliadosController extends Controller
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("aliados", $request->file('imagen'));
-            $request->request->add(["archivo"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
 
         $aliado = Aliados::create($request->all());
@@ -92,11 +92,11 @@ class AliadosController extends Controller
         $aliado = Aliados::findOrFail($id);
 
         if($request->hasFile('imagen')){
-            if($aliado->image){
-                Storage::delete($aliado->image);
+            if($aliado->avatar){
+                Storage::delete($aliado->avatar);
             }
             $path = Storage::putFile("aliados", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
        
         $aliado->update($request->all());

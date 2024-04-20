@@ -69,8 +69,14 @@ class Directory extends Model
             return self::all();
         }
         return self::where('nombre', 'like', "%$query%")
-        ->orWhere('email', 'like', "%$query%")
         ->orWhere('surname', 'like', "%$query%")
+        ->orWhere('email', 'like', "%$query%")
+        ->orWhere('telefonos', 'like', "%$query%")
+        ->orWhere('tel1', 'like', "%$query%")
+        ->orWhere('telhome', 'like', "%$query%")
+        ->orWhere('telmovil', 'like', "%$query%")
+        ->orWhere('telprincipal', 'like', "%$query%")
+        ->orWhere('especialidad', 'like', "%$query%")
         ->get();
     }
 }

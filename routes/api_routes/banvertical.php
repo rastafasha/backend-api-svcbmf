@@ -6,6 +6,7 @@ use App\Http\Controllers\BanVerticalController;
 
 Route::get('banvertical', [BanVerticalController::class, 'index'])->name('index');
 Route::get('banvertical/show/{id}', [BanVerticalController::class, 'show'])->name('show');
+Route::get('banvertical/activos', [BanVerticalController::class, 'activos'])->name('activos');
 
 Route::post('banvertical/store', [BanVerticalController::class, 'store'])->name('store');
 Route::post('banvertical/update/{aliado}', [BanVerticalController::class, 'update'])->name('update');

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Formacions;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Http\Resources\Formacion\FormacionCollection;
 
-class FormacionController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +14,15 @@ class FormacionController extends Controller
      */
     public function index()
     {
-        $formacions = Formacions::orderBy("id", "asc")
+        //
+        $categories = Category::orderBy('created_at', 'DESC')
         ->get();
-                    
+
         return response()->json([
-            "formacions" => FormacionCollection::make($formacions),
-            
-        ]);
+            'code' => 200,
+            'status' => 'Listar todos los categories',
+            'categories' => $categories,
+        ], 200);
     }
 
     /**
@@ -33,16 +33,12 @@ class FormacionController extends Controller
      */
     public function store(Request $request)
     {
-        $formacion_is_valid = Formacions::where("user_id", $request->user_id)->first();
+        // return Category::create($request->all());
 
-        if($formacion_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el formacion ya existe'
-            ]);
-        }
-        $request ->request->add(['slug' => Str::slug($request->title)]);
-        $formacion = Formacions::create($request->all());
+        $category_is_valid = Category::where("user_id", $request->user_id)->first();
+
+
+        $category = Category::create($request->all());
 
         return response()->json([
             "message"=>200,
@@ -57,10 +53,10 @@ class FormacionController extends Controller
      */
     public function show($id)
     {
-        $formacion = formacions::findOrFail($id);
+        $category = Category::findOrFail($id);
 
         return response()->json([
-            "formacion" => $formacion,
+            "category" => $category,
             
         ]);
     }
@@ -74,20 +70,16 @@ class FormacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $category_is_valid = Category::where("id", "<>", $id)->first();
         
-        $formacion_is_valid = Formacions::where("id", "<>", $id)->first();
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
         
-        $formacion = Formacions::findOrFail($id);
-
-        $request ->request->add(['slug' => Str::slug($request->title)]);
-        $formacion->update($request->all());
-        
-        // error_log($formacion);
+        // error_log($blog);
 
         return response()->json([
             "message"=>200,
-            "formacion"=>$formacion,
+            "category"=>$category,
         ]);
     }
 
@@ -99,11 +91,15 @@ class FormacionController extends Controller
      */
     public function destroy($id)
     {
-        $formacion = formacions::findOrFail($id);
+        $category = Category::findOrFail($id);
         
-        $formacion->delete();
+        $category->delete();
         return response()->json([
             "message"=>200
         ]);
+    }
+
+    public function search(Request $request){
+        return Category::search($request->buscar);
     }
 }

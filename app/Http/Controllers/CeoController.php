@@ -44,9 +44,10 @@ class CeoController extends Controller
         }
 
         if($request->hasFile('imagen')){
-            $path = Storage::putFile("ceos", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $path = Storage::putFile("directiva", $request->file('imagen'));
+            $request->request->add(["avatar"=>$path]);
         }
+
 
         $ceo = Ceos::create($request->all());
 
@@ -87,11 +88,11 @@ class CeoController extends Controller
         $ceo = Ceos::findOrFail($id);
 
         if($request->hasFile('imagen')){
-            if($ceo->image){
-                Storage::delete($ceo->image);
+            if($ceo->avatar){
+                Storage::delete($ceo->avatar);
             }
-            $path = Storage::putFile("ceos", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $path = Storage::putFile("directiva", $request->file('imagen'));
+            $request->request->add(["avatar"=>$path]);
         }
        
         $ceo->update($request->all());

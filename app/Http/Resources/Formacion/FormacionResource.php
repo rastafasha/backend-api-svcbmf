@@ -19,6 +19,7 @@ class FormacionResource extends JsonResource
             "id" =>$this->resource->id,
             "user_id" =>$this->resource->user_id,
             'title' =>$this->resource->title,
+            'slug' =>$this->resource->slug,
             'tipoPrograma' =>$this->resource->tipoPrograma,
             'aval' =>$this->resource->aval,
             'tiempoFormacion' =>$this->resource->tiempoFormacion,

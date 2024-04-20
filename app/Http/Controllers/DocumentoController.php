@@ -48,11 +48,12 @@ class DocumentoController extends Controller
             ]);
         }
 
-        if($request->hasFile('imagen')){
-            $path = Storage::putFile("documentos", $request->file('imagen'));
+        if($request->hasFile('imagenn')){
+            $path = Storage::putFile("documentos", $request->file('imagenn'));
             $request->request->add(["archivo"=>$path]);
         }
 
+        
         $documento = Documentos::create($request->all());
 
         return response()->json([
@@ -91,13 +92,14 @@ class DocumentoController extends Controller
         
         $documento = Documentos::findOrFail($id);
 
-        if($request->hasFile('imagen')){
+        if($request->hasFile('imagenn')){
             if($documento->archivo){
                 Storage::delete($documento->archivo);
             }
-            $path = Storage::putFile("documentos", $request->file('imagen'));
+            $path = Storage::putFile("documentos", $request->file('imagenn'));
             $request->request->add(["archivo"=>$path]);
         }
+
        
         $documento->update($request->all());
         

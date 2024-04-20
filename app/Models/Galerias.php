@@ -14,7 +14,7 @@ class Galerias extends Model
     protected $fillable = [
         "user_id",
         'titulo',
-        'image',
+        'avatar',
     ];
 
     public function doctor() {

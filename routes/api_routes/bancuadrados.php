@@ -6,6 +6,7 @@ use App\Http\Controllers\BanCuadriadoController;
 
 Route::get('bancuadrados', [BanCuadriadoController::class, 'index'])->name('index');
 Route::get('bancuadrados/show/{id}', [BanCuadriadoController::class, 'show'])->name('show');
+Route::get('bancuadrados/activos', [BanCuadriadoController::class, 'activos'])->name('activos');
 
 Route::post('bancuadrados/store', [BanCuadriadoController::class, 'store'])->name('store');
 Route::post('bancuadrados/update/{aliado}', [BanCuadriadoController::class, 'update'])->name('update');

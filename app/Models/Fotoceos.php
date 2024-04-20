@@ -15,7 +15,7 @@ class Fotoceos extends Model
         "user_id",
         'periodo',
         'titulo',
-        'image',
+        'avatar',
     ];
 
     public function doctor() {

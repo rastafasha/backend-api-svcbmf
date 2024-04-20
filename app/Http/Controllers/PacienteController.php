@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pacientes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\Paciente\PacienteCollection;
@@ -42,18 +43,19 @@ class PacienteController extends Controller
     {
         $paciente_is_valid = Pacientes::where("user_id", $request->user_id)->first();
 
-        if($paciente_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el paciente ya existe'
-            ]);
-        }
+        // if($paciente_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el paciente ya existe'
+        //     ]);
+        // }
 
         if($request->hasFile('imagen')){
-            $path = Storage::putFile("pacientes", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $path = Storage::putFile("areapacientes", $request->file('imagen'));
+            $request->request->add(["avatar"=>$path]);
         }
 
+        $request ->request->add(['slug' => Str::slug($request->title)]);
         $paciente = Pacientes::create($request->all());
 
         return response()->json([
@@ -93,13 +95,14 @@ class PacienteController extends Controller
         $paciente = Pacientes::findOrFail($id);
 
         if($request->hasFile('imagen')){
-            if($paciente->archivo){
-                Storage::delete($paciente->archivo);
+            if($paciente->avatar){
+                Storage::delete($paciente->avatar);
             }
-            $path = Storage::putFile("pacientes", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $path = Storage::putFile("areapacientes", $request->file('imagen'));
+            $request->request->add(["avatar"=>$path]);
         }
        
+        $request ->request->add(['slug' => Str::slug($request->title)]);
         $paciente->update($request->all());
         
         // error_log($paciente);
@@ -126,5 +129,34 @@ class PacienteController extends Controller
         return response()->json([
             "message"=>200
         ]);
+    }
+
+    public function recientes()
+    {
+        // $this->authorize('recientes', User::class);
+
+        $pacienterecientes = Pacientes::orderBy('created_at', 'DESC')
+        ->get();
+
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'pacienterecientes' => $pacienterecientes
+        ], 200);
+    }
+
+   
+
+    public function destacados()
+    {
+
+        $pacientedestacados = Pacientes::where('isFeatured', $featured=true)
+                ->where('is_active', $is_active= 1)
+                ->get();
+            return response()->json([
+                'code' => 200,
+                'status' => 'Listar Post destacados',
+                'pacientedestacados' => $pacientedestacados,
+            ], 200);
     }
 }

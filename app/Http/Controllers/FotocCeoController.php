@@ -41,16 +41,16 @@ class FotocCeoController extends Controller
     {
         $fotoceo_is_valid = Fotoceos::where("user_id", $request->user_id)->first();
 
-        if($fotoceo_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el fotoceo ya existe'
-            ]);
-        }
+        // if($fotoceo_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el fotoceo ya existe'
+        //     ]);
+        // }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("fotoceos", $request->file('imagen'));
-            $request->request->add(["archivo"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
 
         $fotoceo = Fotoceos::create($request->all());
@@ -92,11 +92,11 @@ class FotocCeoController extends Controller
         $fotoceo = Fotoceos::findOrFail($id);
 
         if($request->hasFile('imagen')){
-            if($fotoceo->archivo){
-                Storage::delete($fotoceo->archivo);
+            if($fotoceo->avatar){
+                Storage::delete($fotoceo->avatar);
             }
             $path = Storage::putFile("fotoceos", $request->file('imagen'));
-            $request->request->add(["archivo"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
        
         $fotoceo->update($request->all());
@@ -105,7 +105,7 @@ class FotocCeoController extends Controller
 
         return response()->json([
             "message"=>200,
-            "otoceo"=>$otoceo,
+            "fotoceo"=>$fotoceo,
         ]);
     }
 

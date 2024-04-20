@@ -31,6 +31,19 @@ class BanHorizontalController extends Controller
         ]);          
     }
 
+    public function activos()
+    {
+
+        $banhorizontals = Banhorizontals::where('is_active', 1)
+                ->get();
+
+            return response()->json([
+                'code' => 200,
+                'status' => 'Listar Post destacados',
+                "banhorizontals" => BanhorizontalCollection::make($banhorizontals),
+            ], 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -126,4 +139,6 @@ class BanHorizontalController extends Controller
             "message"=>200
         ]);
     }
+
+    
 }

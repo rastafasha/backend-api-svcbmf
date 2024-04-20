@@ -11,7 +11,7 @@ class Contact extends Model
 
     protected $fillable = [
 
-        'name','phone', 'email', 'subject', 'comment',
+        'name','phone', 'email', 'subject', 'comment','movil'
     ];
 
     // const PENDING = 'PENDING';

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SliderController;
 
 Route::get('sliders', [SliderController::class, 'index'])->name('index');
+Route::get('sliders/activos', [SliderController::class, 'activos'])->name('activos');
 Route::get('sliders/show/{id}', [SliderController::class, 'show'])->name('show');
 
 Route::post('sliders/store', [SliderController::class, 'store'])->name('store');

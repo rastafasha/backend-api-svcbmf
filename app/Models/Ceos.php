@@ -15,7 +15,7 @@ class Ceos extends Model
         'cargo_id',
         'name',
         'cargoceo_name',
-        'image',
+        'avatar',
     ];
 
     public function author() {

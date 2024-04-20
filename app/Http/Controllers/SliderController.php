@@ -22,6 +22,7 @@ class SliderController extends Controller
         $sliders = Sliders::where(DB::raw("CONCAT(sliders.enlace,' ', IFNULL(sliders.target,''))"),
         "like","%".$search."%"
         )->orderBy("id", "desc")
+        
         ->paginate(10);
         // ->get();
                     
@@ -140,5 +141,18 @@ class SliderController extends Controller
         return response()->json([
             "message"=>200
         ]);
+    }
+
+    public function activos()
+    {
+
+        $sliders = Sliders::where('is_active', 1)
+                ->get();
+
+            return response()->json([
+                'code' => 200,
+                'status' => 'Listar sliders destacados',
+                "sliders" => SliderCollection::make($sliders),
+            ], 200);
     }
 }

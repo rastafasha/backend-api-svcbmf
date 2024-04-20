@@ -19,7 +19,7 @@ class GaleriaController extends Controller
     {
         $search = $request->search;
 
-        $galerias = Galerias::where(DB::raw("CONCAT(galerias.titulo,' ', IFNULL(galerias.image,''))"),
+        $galerias = Galerias::where(DB::raw("CONCAT(galerias.titulo,' ', IFNULL(galerias.avatar,''))"),
         "like","%".$search."%"
         )->orderBy("id", "desc")
         // ->paginate(10);
@@ -42,16 +42,16 @@ class GaleriaController extends Controller
     {
         $galeria_is_valid = Galerias::where("user_id", $request->user_id)->first();
 
-        if($galeria_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el galeria ya existe'
-            ]);
-        }
+        // if($galeria_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el galeria ya existe'
+        //     ]);
+        // }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("galerias", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
 
         $galeria = Galerias::create($request->all());
@@ -93,11 +93,11 @@ class GaleriaController extends Controller
         $galeria = Galerias::findOrFail($id);
 
         if($request->hasFile('imagen')){
-            if($galeria->archivo){
-                Storage::delete($galeria->archivo);
+            if($galeria->avatar){
+                Storage::delete($galeria->avatar);
             }
             $path = Storage::putFile("galerias", $request->file('imagen'));
-            $request->request->add(["image"=>$path]);
+            $request->request->add(["avatar"=>$path]);
         }
        
         $galeria->update($request->all());

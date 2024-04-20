@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Admin\Doctor\DoctorController;
 use App\Http\Controllers\Auth\ChangePasswordController;
@@ -103,6 +104,9 @@ Route::group(['middleware' => 'api'], function ($router) {
     // timelines
     require __DIR__ . '/api_routes/timelines.php';
     
+    // category
+    require __DIR__ . '/api_routes/category.php';
+    
 
 
 
@@ -145,6 +149,8 @@ Route::group(['middleware' => 'api'], function ($router) {
 
     //rutas libres
 
+    Route::post('/contact/form', [ContactFormController::class, 'contactStore'])
+        ->name('contact.store');
 
     // Route::get('/categories', [CategoryController::class, 'index'])
     //     ->name('category.index');

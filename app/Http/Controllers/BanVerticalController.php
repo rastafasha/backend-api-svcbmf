@@ -128,4 +128,17 @@ class BanVerticalController extends Controller
             "message"=>200
         ]);
     }
+
+    public function activos()
+    {
+
+        $banverticals = Banverticals::where('is_active', 1)
+                ->get();
+
+            return response()->json([
+                'code' => 200,
+                'status' => 'Listar Post destacados',
+                "banverticals" => BanverticalCollection::make($banverticals),
+            ], 200);
+    }
 }

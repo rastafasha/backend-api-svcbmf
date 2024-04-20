@@ -21,6 +21,7 @@ class Formacions extends Model
         'director',
         'is_active',
         'is_featured',
+        'slug',
     ];
 
     public function doctor() {

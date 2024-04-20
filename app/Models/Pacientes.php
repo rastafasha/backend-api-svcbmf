@@ -17,7 +17,8 @@ class Pacientes extends Model
         'description',
         'is_active',
         'short_desc',
-        'image',
+        'avatar',
+        'slug',
     ];
 
     public function doctor() {

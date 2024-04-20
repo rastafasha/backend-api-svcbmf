@@ -19,8 +19,9 @@ class GaleriaResource extends JsonResource
             "id" =>$this->resource->id,
             "user_id" =>$this->resource->user_id,
             'titulo' =>$this->resource->titulo,
-            // "image"=> $this->resource->image ? env("APP_URL")."storage/".$this->resource->image : null,
-            "image"=> $this->resource->image ? env("APP_URL").$this->resource->image : null,
+            "avatar"=> $this->resource->avatar ? env("APP_URL")."storage/".$this->resource->avatar : null,
+            // "avatar"=> $this->resource->avatar ? env("APP_URL").$this->resource->avatar : null,
+            
             "created_at"=>$this->resource->created_at ? Carbon::parse($this->resource->created_at)->format("Y-m-d h:i A") : NULL,
         ];
     }

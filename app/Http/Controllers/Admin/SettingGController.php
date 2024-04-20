@@ -61,13 +61,14 @@ class SettingGController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( Configuracions $id)
+    public function show($id)
     {
         $setting = Configuracions::findOrFail($id);
-        return response()->json([
-            "setting" => SettingGResource::make($setting),
-        ]);
 
+        return response()->json([
+            "setting" => $setting,
+            
+        ]);
     }
 
     /**

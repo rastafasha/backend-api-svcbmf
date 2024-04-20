@@ -22,7 +22,7 @@ Route::put('/user/update/{user}', [AdminUserController::class, 'userUpdate'])
 Route::delete('/user/destroy/{user}', [AdminUserController::class, 'userDestroy'])
     ->name('user.destroy');
 
-Route::get('user/recientes/', [AdminUserController::class, 'recientes'])
+Route::get('users/recientes/', [AdminUserController::class, 'recientes'])
     ->name('users.recientes');
 
 Route::get('users/search/{request}', [AdminUserController::class, 'search'])

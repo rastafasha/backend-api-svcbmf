@@ -20,15 +20,23 @@ class BlogResource extends JsonResource
             "user_id" =>$this->resource->user_id,
             'title' =>$this->resource->title,
             'description' =>$this->resource->description,
-            'short_desc' =>$this->resource->short_desc,
+            'slug' =>$this->resource->slug,
+            'favorite_id' =>$this->resource->favorite_id,
+            'is_featured' =>$this->resource->is_featured,
+            'category_id'=>$this->resource-> category_id,
+            // 'category_id'=>$this->resource-> category_id,
+            //     'category'=>[
+            //         'id'=> $this->resource->category->id,
+            //         'name'=> $this->resource->category->nombre
+            //     ],
             // 'author' =>$this->resource->author,
             "author"=>$this->resource->author ? [
                 "id"=>$this->resource->author->id,
-                "full_name"=>$this->resource->author->full_name,
+                "full_name"=>$this->resource->author->name.' '.$this->resource->author->surname,
             ]:NULL,
             'is_active' =>$this->resource->is_active,
-            // "image"=> $this->resource->image ? env("APP_URL")."storage/".$this->resource->image : null,
-            "image"=> $this->resource->image ? env("APP_URL").$this->resource->image : null,
+            "avatar"=> $this->resource->avatar ? env("APP_URL")."storage/".$this->resource->avatar : null,
+            // "avatar"=> $this->resource->avatar ? env("APP_URL").$this->resource->avatar : null,
             
             "created_at"=>$this->resource->created_at ? Carbon::parse($this->resource->created_at)->format("Y-m-d h:i A") : NULL,
         ];

@@ -31,6 +31,19 @@ class BanCuadriadoController extends Controller
         ]);          
     }
 
+    public function activos()
+    {
+
+        $bancuadrados = Bancuadrados::where('is_active', 1)
+                ->get();
+
+            return response()->json([
+                'code' => 200,
+                'status' => 'Listar Post destacados',
+                "bancuadrados" => BancuadradoCollection::make($bancuadrados),
+            ], 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

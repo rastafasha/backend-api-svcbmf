@@ -106,6 +106,8 @@ Route::group(['middleware' => 'api'], function ($router) {
     
     // category
     require __DIR__ . '/api_routes/category.php';
+    // actualizacion
+    require __DIR__ . '/api_routes/actualizacion.php';
     
 
 

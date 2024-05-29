@@ -86,4 +86,8 @@ class ActualizacionController extends Controller
         ], 200);
     }
 
+    public function search(Request $request){
+        return Actualizacion::search($request->buscar);
+    }
+
 }

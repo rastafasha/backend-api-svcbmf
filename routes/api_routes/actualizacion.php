@@ -11,5 +11,8 @@ Route::get('/actualizacion', [ActualizacionController::class, 'index'])
 Route::post('/actualizacion/store', [ActualizacionController::class, 'store'])
     ->name('actualizacion.store');
 
-Route::post('/actualizacion/show/{actualizacion}', [ActualizacionController::class, 'show'])
+Route::get('/actualizacion/search/', [ActualizacionController::class, 'search'])
+    ->name('actualizacion.search');
+
+Route::get('/actualizacion/show/{actualizacion}', [ActualizacionController::class, 'show'])
     ->name('actualizacion.show');

@@ -13,7 +13,7 @@ Route::get('blog/destacados', [BlogController::class, 'destacados'])->name('dest
 Route::get('/blog/showcategory/{blog}', [BlogController::class, 'postShowWithCategory'])
     ->name('blog.postShowWithCategory');
 
-Route::get('/blog/show/slug/{slug}', [BlogController::class, 'postShowSlug'])
+Route::get('/blog/slug/{slug}', [BlogController::class, 'postShowSlug'])
     ->name('blog.postShowSlug');
 
 

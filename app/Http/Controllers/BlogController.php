@@ -133,7 +133,7 @@ class BlogController extends Controller
     }
 
 
-    public function postShowWithCategory(Post $post)
+    public function postShowWithCategory(Blog $post)
     {
 
         // $post = Post::with('categories')->find($id);
@@ -176,14 +176,6 @@ class BlogController extends Controller
         // $post = Post::where('slug', $slug)->first();
 
         $blog = Blog::
-        // select([
-        //     "id",
-        //     'title',
-        //     'description',
-        //     'category_id',
-        //     'slug',
-        //     'avatar',
-        //     ])
             where('slug', $slug)
             ->orderBy('id', 'desc')
             ->first();
@@ -265,14 +257,13 @@ class BlogController extends Controller
             return response()->json([
                 'code' => 200,
                 'status' => 'Listar Post destacados',
-                "blogs" => BlogCollection::make($blogs),
+                // "blogs" => BlogCollection::make($blogs),
                 "blogs"=>$blogs->map(function($blog){
                     return[
                         "id"=> $blog->id,
                         "slug"=> $blog->slug,
                         "title"=> $blog->title,
                         "is_active"=> $blog->is_active,
-                        "slug"=> $blog->slug,
                         "avatar"=> $blog->avatar ? env("APP_URL")."storage/".$blog->avatar : null,
                         "description"=>  Str::limit($blog->description, 100),
                         "created_at"=> $blog->created_at,

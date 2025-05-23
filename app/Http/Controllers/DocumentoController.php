@@ -123,7 +123,7 @@ class DocumentoController extends Controller
         if($documento->image){
             Storage::delete($documento->image);
         }
-        $banvertical->delete();
+        $documento->delete();
         return response()->json([
             "message"=>200
         ]);

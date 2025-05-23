@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pacientes;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\Paciente\PacienteResource;
 use App\Http\Resources\Paciente\PacienteCollection;
 
 class PacienteController extends Controller
@@ -74,7 +75,8 @@ class PacienteController extends Controller
         $paciente = Pacientes::findOrFail($id);
 
         return response()->json([
-            "paciente" => $paciente,
+            // "paciente" => $paciente,
+            "paciente" => PacienteResource::make($paciente),
             
         ]);
     }
@@ -125,7 +127,7 @@ class PacienteController extends Controller
         if($paciente->image){
             Storage::delete($paciente->image);
         }
-        $banvertical->delete();
+        $paciente->delete();
         return response()->json([
             "message"=>200
         ]);

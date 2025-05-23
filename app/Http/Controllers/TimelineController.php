@@ -122,7 +122,7 @@ class TimelineController extends Controller
         if($timeline->image){
             Storage::delete($timeline->image);
         }
-        $banvertical->delete();
+        $timeline->delete();
         return response()->json([
             "message"=>200
         ]);

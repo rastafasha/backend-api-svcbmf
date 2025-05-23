@@ -200,19 +200,7 @@ class BlogController extends Controller
             'status' => 'success',
             // "blogsrecientes" => $blogsrecientes,
             "blogsrecientes" => BlogCollection::make($blogsrecientes),
-            // "blogsrecientes"=>$blogsrecientes->map(function($blogsreciente){
-            //     return[
-            //         "id"=> $blogsdestacado->id,
-            //         "user_id"=> $blogsdestacado->user_id,
-            //         "category_id"=> $blogsdestacado->category_id,
-            //         "slug"=> $blogsdestacado->slug,
-            //         "title"=> $blogsreciente->title,
-            //         "is_active"=> $blogsreciente->is_active,
-            //         "slug"=> $blogsreciente->slug,
-            //         "avatar"=> $blogsreciente->avatar ? env("APP_URL")."storage/".$blogsreciente->avatar : null,
-            //         "created_at"=> $blogsreciente->created_at,
-            //     ];
-            // }),
+            
         ], 200);
     }
 
@@ -230,21 +218,7 @@ class BlogController extends Controller
                 'code' => 200,
                 'status' => 'Listar Post destacados',
                 "blogsdestacados" => BlogCollection::make($blogsdestacados),
-                // "blogsdestacados"=>$blogsdestacados->map(function($blogsdestacado){
-                //     return[
-                //         "id"=> $blogsdestacado->id,
-                //         "slug"=> $blogsdestacado->slug,
-                //         "user_id"=> $blogsdestacado->user_id,
-                //         "category_id"=> $blogsdestacado->category_id,
-                //         "title"=> $blogsdestacado->title,
-                //         "is_featured"=> $blogsdestacado->is_featured,
-                //         "is_active"=> $blogsdestacado->is_active,
-                //         "slug"=> $blogsdestacado->slug,
-                //         "description"=>  Str::limit($blogsdestacado->description, 100),
-                //         "avatar"=> $blogsdestacado->avatar ? env("APP_URL")."storage/".$blogsdestacado->avatar : null,
-                //         "created_at"=> $blogsdestacado->created_at,
-                //     ];
-                // }),
+                
             ], 200);
     }
 
@@ -264,7 +238,8 @@ class BlogController extends Controller
                         "slug"=> $blog->slug,
                         "title"=> $blog->title,
                         "is_active"=> $blog->is_active,
-                        "avatar"=> $blog->avatar ? env("APP_URL")."storage/".$blog->avatar : null,
+                        // "avatar"=> $blog->avatar ? env("APP_URL")."storage/".$blog->avatar : null,
+                         "avatar"=> $blog->avatar ? env("APP_URL").$blog->avatar : null,
                         "description"=>  Str::limit($blog->description, 100),
                         "created_at"=> $blog->created_at,
                     ];

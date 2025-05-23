@@ -134,7 +134,7 @@ class RevistaController extends Controller
         if($revista->image){
             Storage::delete($revista->image);
         }
-        $banvertical->delete();
+        $revista->delete();
         return response()->json([
             "message"=>200
         ]);

@@ -122,7 +122,7 @@ class GaleriaController extends Controller
         if($galeria->image){
             Storage::delete($galeria->image);
         }
-        $banvertical->delete();
+        $galeria->delete();
         return response()->json([
             "message"=>200
         ]);

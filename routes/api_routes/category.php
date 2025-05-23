@@ -15,7 +15,7 @@ Route::get('/category/show/{category}', [CategoryController::class, 'categorySho
     ->name('category.show');
 
 Route::get('/category/showbyName/{category:name}', [CategoryController::class, 'categoryShow'])
-    ->name('category.show');
+    ->name('category.showbyName');
 
 Route::put('/category/update/{category}', [CategoryController::class, 'categoryUpdate'])
     ->name('category.update');

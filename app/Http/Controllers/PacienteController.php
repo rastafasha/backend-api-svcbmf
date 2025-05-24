@@ -81,6 +81,22 @@ class PacienteController extends Controller
         ]);
     }
 
+    public function pacienteShowSlug($slug)
+    {
+        // $post = Post::where('slug', $slug)->first();
+
+        $paciente = Pacientes::
+            where('slug', $slug)
+            ->orderBy('id', 'desc')
+            ->first();
+
+            return response()->json([
+                'code' => 200,
+                'status' => 'Listar Post by slug',
+                'paciente' => PacienteResource::make($paciente),
+            ], 200);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -143,7 +159,8 @@ class PacienteController extends Controller
         return response()->json([
             'code' => 200,
             'status' => 'success',
-            'pacienterecientes' => $pacienterecientes
+            // 'pacienterecientes' => $pacienterecientes,
+            'pacienterecientes' => PacienteCollection::make($pacienterecientes)
         ], 200);
     }
 
@@ -158,7 +175,10 @@ class PacienteController extends Controller
             return response()->json([
                 'code' => 200,
                 'status' => 'Listar Post destacados',
-                'pacientedestacados' => $pacientedestacados,
+                // 'pacientedestacados' => $pacientedestacados,
+                'pacientedestacados' => PacienteCollection::make($pacientedestacados)
+                
+                
             ], 200);
     }
 }

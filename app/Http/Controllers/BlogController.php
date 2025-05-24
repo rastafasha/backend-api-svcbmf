@@ -209,7 +209,7 @@ class BlogController extends Controller
     public function destacados()
     {
 
-        $blogsdestacados = Blog::where('is_featured', 1)
+        $blogsdestacados = Blog::where('is_featured',1)
                 ->where('is_active', 1)
                 ->get([
                     'blogs.*', 'blogs.title',
@@ -225,25 +225,28 @@ class BlogController extends Controller
     public function activos()
     {
 
-        $blogs = Blog::where('is_active', 1)
-                ->get();
+        $blogs = Blog::
+                where('is_active', 1)
+                ->get([
+                    'blogs.*', 'blogs.title',
+                ]);
 
             return response()->json([
                 'code' => 200,
                 'status' => 'Listar Post destacados',
-                // "blogs" => BlogCollection::make($blogs),
-                "blogs"=>$blogs->map(function($blog){
-                    return[
-                        "id"=> $blog->id,
-                        "slug"=> $blog->slug,
-                        "title"=> $blog->title,
-                        "is_active"=> $blog->is_active,
-                        // "avatar"=> $blog->avatar ? env("APP_URL")."storage/".$blog->avatar : null,
-                         "avatar"=> $blog->avatar ? env("APP_URL").$blog->avatar : null,
-                        "description"=>  Str::limit($blog->description, 100),
-                        "created_at"=> $blog->created_at,
-                    ];
-                }),
+                "blogs" => BlogCollection::make($blogs),
+                // "blogs"=>$blogs->map(function($blog){
+                //     return[
+                //         "id"=> $blog->id,
+                //         "slug"=> $blog->slug,
+                //         "title"=> $blog->title,
+                //         "is_active"=> $blog->is_active,
+                //         // "avatar"=> $blog->avatar ? env("APP_URL")."storage/".$blog->avatar : null,
+                //          "avatar"=> $blog->avatar ? env("APP_URL").$blog->avatar : null,
+                //         "description"=>  Str::limit($blog->description, 100),
+                //         "created_at"=> $blog->created_at,
+                //     ];
+                // }),
             ], 200);
     }
 

@@ -77,9 +77,9 @@ class PermissionsDemoSeeder extends Seeder
         // $role1->givePermissionTo('edit articles');
         // $role1->givePermissionTo('delete articles');
 
-        // $role2 = Role::create(['guard_name' => 'api','name' => 'admin']);
-        // $role2->givePermissionTo('publish articles');
-        // $role2->givePermissionTo('unpublish articles');
+        $role2 = Role::create(['guard_name' => 'api','name' => 'ADMIN']);
+        $role2->givePermissionTo('publish articles');
+        $role2->givePermissionTo('unpublish articles');
 
         $role3 = Role::create(['guard_name' => 'api','name' => 'SUPERADMIN']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider

@@ -15,24 +15,27 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+       Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('surname')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('name', 250);
+            $table->string('surname',  250);
+            $table->string('mobile',  50)->nullable();
             $table->timestamp('birth_date')->nullable();
-            $table->tinyint('gender');
+            $table->tinyInteger('gender')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->longtext('education')->nullable();
             $table->longtext('designation')->nullable();
             $table->text('address')->nullable();
             $table->string('avatar')->nullable();
-            $table->enum('rolename', [User::SUPERADMIN, User::GUEST])->default(User::GUEST);
-            $table->string('email')->unique();
+            
+            $table->string('email')->unique()->comment('User email for login');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('password')->comment('Hashed password');
+
+            $table->rememberToken()->comment('For "remember me" functionality');
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 

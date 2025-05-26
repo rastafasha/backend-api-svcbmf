@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Resources\Banners\Bannhorizontal;
 
 use Carbon\Carbon;

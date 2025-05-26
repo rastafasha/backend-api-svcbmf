@@ -119,10 +119,39 @@ Route::group(['middleware' => 'api'], function ($router) {
         Artisan::call('cache:clear');
         return "Cache";
     });
+    
+    
+    Route::get('/seederuser', function () {
+        Artisan::call('db:seed --class=UserSeeder');
+        return "UserSeeder";
+    });
+    
+     Route::get('/clear-cache', function () {
+        Artisan::call('route:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('route:cache');
+        return 'Cache cleared!';
+    });
+    
+    
+     Route::get('/routeclear', function () {
+        Artisan::call('route:clear');
+        return "Route clear";
+    });
+    
+     Route::get('/config', function () {
+        Artisan::call('config:clear');
+        return "config clear";
+    });
+    
+    Route::get('/view', function () {
+        Artisan::call('view:clear');
+        return "view:clear";
+    });
 
     Route::get('/optimize', function () {
         Artisan::call('optimize:clear');
-        return "Optimización de Laravel";
+        return "Optimizaci贸n de Laravel";
     });
 
     Route::get('/storage-link', function () {

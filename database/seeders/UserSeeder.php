@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
 use App\Models\User;
-use App\Models\Permission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -15,11 +14,10 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $users = [
-
-             [
+            [
                 // "rolename" => User::SUPERADMIN,
                 "name" => "super",
                 'surname' => 'Johnson',
@@ -79,7 +77,6 @@ class UserSeeder extends Seeder
                 'surname' => 'Johnson',
                 "email" => "doctor@doctor.com",
                 'gender' => 1,
-                'speciality_id' => 1,
                 'mobile' => '1234567893',
                 'roles' => [
                     [
@@ -101,23 +98,79 @@ class UserSeeder extends Seeder
                 "email_verified_at" => now(),
                 "created_at" => now(),
             ],
+            [
+                // "rolename" => User::DOCTOR,
+                "name" => "Jane",
+                'surname' => 'Johnson',
+                "email" => "doctora@doctora.com",
+                'gender' => 1,
+                'mobile' => '1234567893',
+                'roles' => [
+                    [
+                        "id"=> 3,
+                        "name"=> "DOCTOR",
+                        "guard_name"=> "api",
+                        "created_at"=> "2025-02-16T06:49:18.000000Z",
+                        "updated_at"=> "2025-02-16T06:49:18.000000Z",
+                    ],
+                    'pivot' => [
+                        [
+                            "model_id"=> 2,
+                            "role_id"=> 3,
+                            "model_type"=> "App\\Models\\User"
+                        ]
+                    ],
+                ],
+                "password" => bcrypt("password"),
+                "email_verified_at" => now(),
+                "created_at" => now(),
+            ],
+           
+            [
+                // "rolename" => User::GUEST,
+                "name" => "invitado",
+                'surname' => 'Johnson',
+                "email" => "invitado@invitado.com",
+                'gender' => 1,
+                'mobile' => '1234567893',
+                "password" => bcrypt("password"),
+                'roles' => [
+                    [
+                        "id"=> 9,
+                        "name"=> "GUEST",
+                        "guard_name"=> "api",
+                        "created_at"=> "2025-02-16T06:49:18.000000Z",
+                        "updated_at"=> "2025-02-16T06:49:18.000000Z",
+                    ],
+                    'pivot' => [
+                        [
+                            "model_id"=> 8,
+                            "role_id"=> 9,   
+                            "model_type"=> "App\\Models\\User"
+                        ]
+                    ],
+                ],
+                "email_verified_at" => now(),
+                "created_at" => now(),
+            ]
         ];
 
-        foreach ($users as $userData) {
-            $roles = $userData['roles'] ?? [];
-            unset($userData['roles']);
-
-            $user = User::create($userData);
-
-            if (!empty($roles)) {
-                // Filter roles to only those with 'id' key to avoid errors
-                $filteredRoles = array_filter($roles, function($role) {
-                    return is_array($role) && array_key_exists('id', $role);
-                });
-                $roleIds = array_map(function($role) {
-                    return $role['id'];
-                }, $filteredRoles);
-                $user->roles()->sync($roleIds);
+        foreach ($users as $user) {
+            // Extract roles before creating user
+            $roles = $user['roles'] ?? null;
+            unset($user['roles']);
+            
+            // Create user
+            //si no tiene asignado un rol, se le asigna el rol de invitado
+            if (!$roles) {
+                $createdUser->assignRole(User::GUEST);
+                    } 
+            $createdUser = User::create($user);
+            
+            // Attach roles if they exist
+            if ($roles) {
+                $roleIds = array_column($roles, 'id');
+                $createdUser->roles()->sync($roleIds);
             }
         }
     }

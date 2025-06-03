@@ -49,7 +49,7 @@ class ActualizacionsTableSeeder extends Seeder
                 'especialidad' => 'Cirugía Bucal',
                 'universidad' => 'Universidad del Zulia',
                 'ano' => null,
-                'org' => 'SVCBMF',
+               'org' => 'SVCBMF',
                 'website' => null,
                 'email' => 'mariajoseperozom@gmail.com',
                 'direccion' => 'Calle 78 con 13a. Centro Profesional Jimero Jimenez',

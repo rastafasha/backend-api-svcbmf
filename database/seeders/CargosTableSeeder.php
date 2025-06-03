@@ -15,13 +15,13 @@ class CargosTableSeeder extends Seeder
     public function run()
     {
         DB::table('cargos')->insert([
-            ['id' => 1, 'cargo_name' => 'Presidente'],
-            ['id' => 2, 'cargo_name' => 'Vice-Presidente'],
-            ['id' => 3, 'cargo_name' => 'Secretario'],
-            ['id' => 4, 'cargo_name' => 'Tesorero'],
-            ['id' => 5, 'cargo_name' => 'Vocal'],
-            ['id' => 6, 'cargo_name' => '1er. Suplente'],
-            ['id' => 7, 'cargo_name' => '2do.Suplente'],
+            ['id' => 1, 'cargo_name' => 'Presidente', 'user_id' => 1],
+            ['id' => 2, 'cargo_name' => 'Vice-Presidente', 'user_id' => 1],
+            ['id' => 3, 'cargo_name' => 'Secretario', 'user_id' => 1],
+            ['id' => 4, 'cargo_name' => 'Tesorero', 'user_id' => 1],
+            ['id' => 5, 'cargo_name' => 'Vocal', 'user_id' => 1],
+            ['id' => 6, 'cargo_name' => '1er. Suplente', 'user_id' => 1],
+            ['id' => 7, 'cargo_name' => '2do.Suplente', 'user_id' => 1],
         ]);
     }
 }

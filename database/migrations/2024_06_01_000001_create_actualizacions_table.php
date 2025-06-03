@@ -15,8 +15,27 @@ class CreateActualizacionsTable extends Migration
     {
         Schema::create('actualizacions', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->string('nombre');
+            $table->string('surname')->nullable();
+            $table->string('especialidad');
+            $table->string('universidad');
+            $table->string('ano')->nullable();
+            $table->string('org')->nullable();
+            $table->string('website')->nullable();
+            $table->string('email');
+            $table->text('direccion');
+            $table->text('direccion1')->nullable();
+            $table->string('estado')->nullable();
+            $table->string('ciudad')->nullable();
+            $table->string('telefonos')->nullable();
+            $table->string('tel1')->nullable();
+            $table->string('telhome')->nullable();
+            $table->string('telmovil')->nullable();
+            $table->string('telprincipal')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linkedin')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

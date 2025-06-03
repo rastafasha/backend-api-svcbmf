@@ -19,9 +19,11 @@ class CreatePacientesTable extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->boolean('is_featured')->default(false);
             $table->string('short_desc')->nullable();
             $table->string('avatar')->nullable();
             $table->string('slug')->nullable();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

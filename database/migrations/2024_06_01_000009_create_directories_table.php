@@ -24,8 +24,8 @@ class CreateDirectoriesTable extends Migration
             $table->string('org')->nullable();
             $table->string('website')->nullable();
             $table->string('email')->nullable();
-            $table->string('direccion')->nullable();
-            $table->string('direccion1')->nullable();
+            $table->text('direccion')->nullable();
+            $table->text('direccion1')->nullable();
             $table->string('estado')->nullable();
             $table->string('ciudad')->nullable();
             $table->string('telefonos')->nullable();
@@ -38,7 +38,7 @@ class CreateDirectoriesTable extends Migration
             $table->string('twitter')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('vcard')->nullable();
+            $table->text('vcard')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();

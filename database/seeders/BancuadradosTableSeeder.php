@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class BancuadradosTableSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class BancuadradosTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('bancuadrados')->insert([
+        $data = [
             [
                 'id' => 1,
                 'user_id' => 1,
@@ -23,10 +24,12 @@ class BancuadradosTableSeeder extends Seeder
                 'target' => '_self',
                 'enlace' => 'contacto',
                 'is_active' => 1,
-                'created_at' => '2019-12-18 06:06:08',
-                'updated_at' => '2024-04-18 22:28:09',
+                'created_at' => Carbon::parse('2019-12-18 06:06:08'),
+                'updated_at' => Carbon::parse('2024-04-18 22:28:09'),
                 'deleted_at' => null,
             ],
-        ]);
+        ];
+
+        DB::table('bancuadrados')->insert($data);
     }
 }

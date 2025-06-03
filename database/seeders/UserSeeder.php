@@ -136,7 +136,7 @@ class UserSeeder extends Seeder
                 "password" => bcrypt("password"),
                 'roles' => [
                     [
-                        "id"=> 9,
+                        "id"=> 5,
                         "name"=> "GUEST",
                         "guard_name"=> "api",
                         "created_at"=> "2025-02-16T06:49:18.000000Z",
@@ -145,7 +145,7 @@ class UserSeeder extends Seeder
                     'pivot' => [
                         [
                             "model_id"=> 8,
-                            "role_id"=> 9,   
+                            "role_id"=> 5,   
                             "model_type"=> "App\\Models\\User"
                         ]
                     ],

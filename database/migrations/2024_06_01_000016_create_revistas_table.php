@@ -20,7 +20,7 @@ class CreateRevistasTable extends Migration
             $table->string('archivo')->nullable();
             $table->string('volumen')->nullable();
             $table->string('numero')->nullable();
-            $table->date('fecha')->nullable();
+            $table->string('fecha')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

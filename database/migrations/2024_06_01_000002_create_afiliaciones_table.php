@@ -15,7 +15,6 @@ class CreateAfiliacionesTable extends Migration
     {
         Schema::create('afiliaciones', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('titulo')->nullable();

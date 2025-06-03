@@ -24,7 +24,7 @@ class CreateBlogsTable extends Migration
             $table->string('slug')->unique();
             $table->unsignedBigInteger('favorite_id')->nullable();
             $table->boolean('is_featured')->default(false);
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

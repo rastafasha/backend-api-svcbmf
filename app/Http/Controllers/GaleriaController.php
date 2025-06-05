@@ -40,15 +40,7 @@ class GaleriaController extends Controller
      */
     public function store(Request $request)
     {
-        $galeria_is_valid = Galerias::where("user_id", $request->user_id)->first();
-
-        // if($galeria_is_valid){
-        //     return response()->json([
-        //         "message"=>403,
-        //         "message_text"=> 'el galeria ya existe'
-        //     ]);
-        // }
-
+       
         if($request->hasFile('imagen')){
             $path = Storage::putFile("galerias", $request->file('imagen'));
             $request->request->add(["avatar"=>$path]);

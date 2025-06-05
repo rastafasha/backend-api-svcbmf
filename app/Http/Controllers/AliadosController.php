@@ -39,14 +39,6 @@ class AliadosController extends Controller
      */
     public function aliadosStore(Request $request)
     {
-        $aliado_is_valid = Aliados::where("user_id", $request->user_id)->first();
-
-        if($aliado_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el Aliados ya existe'
-            ]);
-        }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("aliados", $request->file('imagen'));

@@ -41,15 +41,7 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $slider_is_valid = Sliders::where("user_id", $request->user_id)->first();
-
-        // if($slider_is_valid){
-        //     return response()->json([
-        //         "message"=>403,
-        //         "message_text"=> 'el slider ya existe'
-        //     ]);
-        // }
-
+       
         if($request->hasFile('imagen')){
             $path = Storage::putFile("sliders", $request->file('imagen'));
             $request->request->add(["avatar"=>$path]);

@@ -32,14 +32,6 @@ class DirRegionalController extends Controller
      */
     public function store(Request $request)
     {
-        $dirregional_is_valid = Dirregionals::where("user_id", $request->user_id)->first();
-
-        if($dirregional_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el dirregional ya existe'
-            ]);
-        }
 
         $dirregional = Dirregionals::create($request->all());
 

@@ -42,14 +42,6 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        $paciente_is_valid = Pacientes::where("user_id", $request->user_id)->first();
-
-        // if($paciente_is_valid){
-        //     return response()->json([
-        //         "message"=>403,
-        //         "message_text"=> 'el paciente ya existe'
-        //     ]);
-        // }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("areapacientes", $request->file('imagen'));

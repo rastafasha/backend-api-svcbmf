@@ -39,15 +39,6 @@ class FotocCeoController extends Controller
      */
     public function store(Request $request)
     {
-        $fotoceo_is_valid = Fotoceos::where("user_id", $request->user_id)->first();
-
-        // if($fotoceo_is_valid){
-        //     return response()->json([
-        //         "message"=>403,
-        //         "message_text"=> 'el fotoceo ya existe'
-        //     ]);
-        // }
-
         if($request->hasFile('imagen')){
             $path = Storage::putFile("fotoceos", $request->file('imagen'));
             $request->request->add(["avatar"=>$path]);

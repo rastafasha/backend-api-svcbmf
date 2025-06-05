@@ -52,15 +52,6 @@ class BanCuadriadoController extends Controller
      */
     public function store(Request $request)
     {
-        $bancuadrado_is_valid = Bancuadrados::where("user_id", $request->user_id)->first();
-
-        // if($bancuadrado_is_valid){
-        //     return response()->json([
-        //         "message"=>403,
-        //         "message_text"=> 'el banhorizontals ya existe'
-        //     ]);
-        // }
-
         if($request->hasFile('imagen')){
             $path = Storage::putFile("bancuadrados", $request->file('imagen'));
             $request->request->add(["avatar"=>$path]);

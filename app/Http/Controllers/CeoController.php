@@ -34,14 +34,6 @@ class CeoController extends Controller
      */
     public function store(Request $request)
     {
-        $ceo_is_valid = Ceos::where("user_id", $request->user_id)->first();
-
-        if($ceo_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el ceo ya existe'
-            ]);
-        }
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("directiva", $request->file('imagen'));

@@ -40,15 +40,7 @@ class RevistaController extends Controller
      */
     public function store(Request $request)
     {
-        // $revista_is_valid = Revistas::where("user_id", $request->user_id)->first();
-
-        // if($revista_is_valid){
-        //     return response()->json([
-        //         "message"=>403,
-        //         "message_text"=> 'el revista ya existe'
-        //     ]);
-        // }
-
+        
         if($request->hasFile('imagen')){
             $path = Storage::putFile("revistas", $request->file('imagen'));
             $request->request->add(["image"=>$path]);

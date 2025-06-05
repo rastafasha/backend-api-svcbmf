@@ -39,14 +39,6 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        $documento_is_valid = Documentos::where("user_id", $request->user_id)->first();
-
-        if($documento_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el documento ya existe'
-            ]);
-        }
 
         if($request->hasFile('imagenn')){
             $path = Storage::putFile("documentos", $request->file('imagenn'));

@@ -40,15 +40,7 @@ class TimelineController extends Controller
      */
     public function store(Request $request)
     {
-        $timeline_is_valid = Timelines::where("user_id", $request->user_id)->first();
-
-        if($timeline_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el timeline ya existe'
-            ]);
-        }
-
+       
         if($request->hasFile('imagen')){
             $path = Storage::putFile("timelines", $request->file('imagen'));
             $request->request->add(["image"=>$path]);

@@ -39,15 +39,6 @@ class BanVerticalController extends Controller
      */
     public function store(Request $request)
     {
-        $banvertical_is_valid = Banverticals::where("user_id", $request->user_id)->first();
-
-        // if($banvertical_is_valid){
-        //     return response()->json([
-        //         "message"=>403,
-        //         "message_text"=> 'el banvertical ya existe'
-        //     ]);
-        // }
-
         if($request->hasFile('imagen')){
             $path = Storage::putFile("banverticals", $request->file('imagen'));
             $request->request->add(["avatar"=>$path]);

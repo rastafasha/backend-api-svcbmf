@@ -41,14 +41,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $blog_is_valid = Blog::where("user_id", $request->user_id)->first();
-
-        if($blog_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el blog ya existe'
-            ]);
-        }
+        
 
         if($request->hasFile('imagen')){
             $path = Storage::putFile("blogs", $request->file('imagen'));

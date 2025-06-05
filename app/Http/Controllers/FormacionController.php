@@ -33,14 +33,8 @@ class FormacionController extends Controller
      */
     public function store(Request $request)
     {
-        $formacion_is_valid = Formacions::where("user_id", $request->user_id)->first();
-
-        if($formacion_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el formacion ya existe'
-            ]);
-        }
+        
+       
         $request ->request->add(['slug' => Str::slug($request->title)]);
         $formacion = Formacions::create($request->all());
 

@@ -33,11 +33,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // return Category::create($request->all());
-
-        $category_is_valid = Category::where("user_id", $request->user_id)->first();
-
-
+       
         $category = Category::create($request->all());
 
         return response()->json([

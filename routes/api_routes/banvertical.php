@@ -12,6 +12,6 @@ Route::post('banvertical/store', [BanVerticalController::class, 'store'])->name(
 Route::post('banvertical/update/{aliado}', [BanVerticalController::class, 'update'])->name('banvertical.update');
 Route::delete('banvertical/destroy/{id}', [BanVerticalController::class, 'destroy'])->name('banvertical.destroy');
 
-Route::put('/banvertical/update/status/{aliado:id}', [BanVerticalController::class, 'updateEligibility'])
+Route::put('banvertical/update/status/{aliado:id}', [BanVerticalController::class, 'updateEligibility'])
     ->name('banvertical.updateEligibility');
 

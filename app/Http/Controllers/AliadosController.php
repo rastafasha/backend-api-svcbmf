@@ -37,7 +37,7 @@ class AliadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function aliadosStore(Request $request)
     {
         $aliado_is_valid = Aliados::where("user_id", $request->user_id)->first();
 

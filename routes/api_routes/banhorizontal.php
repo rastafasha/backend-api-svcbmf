@@ -13,6 +13,6 @@ Route::post('banhorizontal/store', [BanHorizontalController::class, 'store'])->n
 Route::post('banhorizontal/update/{aliado}', [BanHorizontalController::class, 'update'])->name('banhorizontal.update');
 Route::delete('banhorizontal/destroy/{id}', [BanHorizontalController::class, 'destroy'])->name('banhorizontal.destroy');
 
-Route::put('/banhorizontal/update/status/{aliado:id}', [BanHorizontalController::class, 'updateEligibility'])
+Route::put('banhorizontal/update/status/{aliado:id}', [BanHorizontalController::class, 'updateEligibility'])
     ->name('banhorizontal.updateEligibility');
 

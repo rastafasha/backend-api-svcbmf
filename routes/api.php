@@ -130,6 +130,7 @@ Route::group(['middleware' => 'api'], function ($router) {
         Artisan::call('route:clear');
         Artisan::call('cache:clear');
         Artisan::call('route:cache');
+        Artisan::call('config:clear');
         return 'Cache cleared!';
     });
     

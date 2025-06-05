@@ -4158,3 +4158,15 @@ END:VCARD
 #49 /Users/malcolm/Documents/work/clientes/svcbmf/backend-api-svcbmf/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #50 {main}
 "} 
+[2025-06-03 20:24:41] local.ERROR: Uncaught ReflectionException: Class "Spatie\Permission\Middlewares\RoleMiddleware" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Spatie\\Permissi...', 'handle')
+#1 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"Spatie\\Permission\\Middlewares\\RoleMiddleware\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Spatie\\\\Permissi...', 'handle')
+#1 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 

@@ -12,6 +12,6 @@ Route::post('bancuadrados/store', [BanCuadriadoController::class, 'store'])->nam
 Route::post('bancuadrados/update/{aliado}', [BanCuadriadoController::class, 'update'])->name('bancuadrados.update');
 Route::delete('bancuadrados/destroy/{id}', [BanCuadriadoController::class, 'destroy'])->name('bancuadrados.destroy');
 
-Route::put('/bancuadrados/update/status/{aliado:id}', [BanCuadriadoController::class, 'updateEligibility'])
+Route::put('bancuadrados/update/status/{aliado:id}', [BanCuadriadoController::class, 'updateEligibility'])
     ->name('bancuadrados.updateEligibility');
 

@@ -25,7 +25,6 @@ class CeosTableSeeder extends Seeder
                 'avatar' => 'directiva/0bR1v1egxspYAeoMbYBI0Xzw0a4OXeglaOiM2pte.jpg',
                 'created_at' => Carbon::parse('2021-09-24 00:58:15'),
                 'updated_at' => Carbon::parse('2025-05-23 16:08:07'),
-                'deleted_at' => null,
             ],
             [
                 'id' => 2,
@@ -36,7 +35,6 @@ class CeosTableSeeder extends Seeder
                 'avatar' => 'directiva/B0LTlqw2kbINUcf76XBBWJXNLSQfOKjdSmOyZhy2.jpg',
                 'created_at' => Carbon::parse('2021-09-24 01:08:21'),
                 'updated_at' => Carbon::parse('2025-05-23 16:07:55'),
-                'deleted_at' => null,
             ],
             [
                 'id' => 3,
@@ -45,9 +43,11 @@ class CeosTableSeeder extends Seeder
                 'cargo_id' => 3,
                 'cargoceo_name' => 'Secretario',
                 'avatar' => 'directiva/4mN9FkAqTyP5HZeK1oebKezKbwjpfZy9Iw3YzOj2.jpg',
+                'cargoceo_name' => 'Secretario',
+                'avatar' => 'directiva/4mN9FkAqTyP5HZeK1oebKezKbwjpfZy9Iw3YzOj2.jpg',
                 'created_at' => Carbon::parse('2021-09-24 01:28:20'),
                 'updated_at' => Carbon::parse('2025-05-23 16:07:43'),
-                'deleted_at' => null,
+                
             ],
             [
                 'id' => 4,
@@ -58,7 +58,7 @@ class CeosTableSeeder extends Seeder
                 'avatar' => 'directiva/UzjTzxTfJj9cEeagVka6rVuUOcKR9G7VAvrJwLVj.jpg',
                 'created_at' => Carbon::parse('2021-09-24 01:40:08'),
                 'updated_at' => Carbon::parse('2025-05-23 16:08:19'),
-                'deleted_at' => null,
+                
             ],
             [
                 'id' => 5,
@@ -69,7 +69,7 @@ class CeosTableSeeder extends Seeder
                 'avatar' => 'directiva/zAwXxzb9UVhv9xBD3I3FpFgcXngYCHwm8R5XKoEu.jpg',
                 'created_at' => Carbon::parse('2021-09-24 01:41:14'),
                 'updated_at' => Carbon::parse('2025-05-23 16:08:30'),
-                'deleted_at' => null,
+                
             ],
             [
                 'id' => 6,
@@ -80,7 +80,7 @@ class CeosTableSeeder extends Seeder
                 'avatar' => 'directiva/2y1k3Gz3Bz9vV0amm3XFZ4MHbgQgV9gpQJQiIa1S.jpg',
                 'created_at' => Carbon::parse('2021-09-24 01:41:46'),
                 'updated_at' => Carbon::parse('2025-05-23 16:08:42'),
-                'deleted_at' => null,
+                
             ],
             [
                 'id' => 7,
@@ -91,7 +91,7 @@ class CeosTableSeeder extends Seeder
                 'avatar' => 'directiva/gVyIzjo8dZUduNjyFEImgiwhxCgTOhJkJUr0J6m7.jpg',
                 'created_at' => Carbon::parse('2021-09-24 01:42:20'),
                 'updated_at' => Carbon::parse('2025-05-23 16:08:55'),
-                'deleted_at' => null,
+                
             ],
         ];
 

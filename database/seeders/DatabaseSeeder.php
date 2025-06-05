@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DocumentosTableSeeder::class);
         $this->call(FormacionsTableSeeder::class);
         $this->call(FotoceosTableSeeder::class);
+        $this->call(CeosTableSeeder::class);
         $this->call(GaleriasTableSeeder::class);
         $this->call(PacientesTableSeeder::class);
         $this->call(RevistasTableSeeder::class);

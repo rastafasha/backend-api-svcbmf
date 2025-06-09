@@ -39,6 +39,7 @@ class AdminUserController extends Controller
         //    }
         
         $users = User::orderBy('id', 'desc')
+        ->with('roles')
             ->get();
 
             return response()->json([

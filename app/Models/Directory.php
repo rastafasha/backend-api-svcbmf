@@ -77,6 +77,8 @@ class Directory extends Model
         ->orWhere('telmovil', 'like', "%$query%")
         ->orWhere('telprincipal', 'like', "%$query%")
         ->orWhere('especialidad', 'like', "%$query%")
+        ->orWhere('estado', 'like', "%$query%")
+        ->orWhere('ciudad', 'like', "%$query%")
         ->get();
     }
 }

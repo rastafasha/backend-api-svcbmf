@@ -17,4 +17,3 @@ Route::delete('directory/destroy/{id}', [DirectoryController::class, 'destroy'])
 
 Route::put('directory/update/eligibility/{directory:id}', [DirectoryController::class, 'updateEligibility'])
     ->name('directory.updateEligibility');
-

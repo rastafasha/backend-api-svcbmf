@@ -19,10 +19,10 @@ class DirectoryController extends Controller
      */
     public function index(Request $request)
     {
-        $speciality_id = $request->speciality_id;
+        $especialidad = $request->especialidad;
         $name_doctor = $request->search;
 
-        $directories = Directory::filterAdvance($speciality_id, $name_doctor)->orderBy("nombre", "asc")
+        $directories = Directory::filterAdvance($especialidad, $name_doctor)->orderBy("nombre", "asc")
                             // ->paginate(10);
                             -> get();
         return response()->json([
@@ -188,4 +188,5 @@ class DirectoryController extends Controller
     public function search(Request $request){
         return Directory::search($request->buscar);
     }
+
 }

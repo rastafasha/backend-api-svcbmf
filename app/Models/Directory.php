@@ -81,4 +81,7 @@ class Directory extends Model
         ->orWhere('ciudad', 'like', "%$query%")
         ->get();
     }
+
+
+   
 }

@@ -220,6 +220,7 @@ class BlogController extends Controller
 
         $blogs = Blog::
                 where('is_active', 1)
+                ->orderBy('created_at', 'DESC')
                 ->get([
                     'blogs.*', 'blogs.title',
                 ]);

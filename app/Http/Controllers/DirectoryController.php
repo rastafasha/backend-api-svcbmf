@@ -72,6 +72,7 @@ class DirectoryController extends Controller
 
 
         $directory = new Directory();
+        $directory->user_id = $validatedData['user_id'];
         $directory->nombre = $validatedData['nombre'];
         $directory->surname = $validatedData['surname'];
         $directory->especialidad = $validatedData['especialidad'];

@@ -68,8 +68,18 @@ class Directory extends Model
         if(!$query){
             return self::all();
         }
-        return self::where('nombre', 'like', "%$query%")
-        ->orWhere('surname', 'like', "%$query%")
+
+        $queryParts = explode(' ', $query);
+
+        return self::where(function($q) use ($queryParts) {
+            if(count($queryParts) > 1){
+                $q->where('nombre', 'like', "%{$queryParts[0]}%")
+                  ->where('surname', 'like', "%{$queryParts[1]}%");
+            } else {
+                $q->where('nombre', 'like', "%{$queryParts[0]}%")
+                  ->orWhere('surname', 'like', "%{$queryParts[0]}%");
+            }
+        })
         ->orWhere('email', 'like', "%$query%")
         ->orWhere('telefonos', 'like', "%$query%")
         ->orWhere('tel1', 'like', "%$query%")
